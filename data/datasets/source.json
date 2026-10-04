@@ -1,0 +1,24 @@
+{
+  "repository": "scikit-learn/iris",
+  "source_page": "https://huggingface.co/datasets/scikit-learn/iris",
+  "download_url": "https://huggingface.co/datasets/scikit-learn/iris/resolve/main/Iris.csv",
+  "downloaded_at_utc": "2026-10-04T21:40:53+00:00",
+  "source_file": "Iris.source.csv",
+  "normalized_file": "iris.csv",
+  "rows": 150,
+  "units": "cm",
+  "features": [
+    "sepal_length_cm",
+    "sepal_width_cm",
+    "petal_length_cm",
+    "petal_width_cm"
+  ],
+  "target": "species",
+  "classes": [
+    "setosa",
+    "versicolor",
+    "virginica"
+  ],
+  "transformation": "Названия столбцов приведены к формату проекта; удалён префикс Iris- у видов. Измерения сохранены в версии источника.",
+  "source_license_label": "cc0-1.0"
+}

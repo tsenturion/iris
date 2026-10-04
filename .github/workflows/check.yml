@@ -1,0 +1,45 @@
+name: Проверка запуска и основных сценариев
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - LICENSE
+  pull_request:
+    paths-ignore:
+      - "**/*.md"
+      - LICENSE
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    name: Windows и Python 3.13
+    runs-on: windows-latest
+    timeout-minutes: 10
+    env:
+      PYTHONUTF8: "1"
+      UV_PYTHON: "3.13"
+    steps:
+      - name: Получение проекта
+        uses: actions/checkout@v7
+      - name: Подготовка Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Подготовка uv
+        uses: astral-sh/setup-uv@v10.1.0
+      - name: Проверка первого запуска
+        shell: pwsh
+        run: .\start.ps1 -Check
+      - name: Проверка основных сценариев
+        shell: pwsh
+        run: >-
+          uv run --locked python -X utf8 -m unittest
+          tests.test_module6.PredictionInterfaceTests.test_single_save_confirm_edit_predict_and_reopen
+          tests.test_module6.PredictionInterfaceTests.test_csv_preview_save_and_reopen
+          tests.test_module6.ApplicationTests.test_revision_history_latest_export_and_backup
+          -v

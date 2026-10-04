@@ -1,0 +1,23 @@
+[project]
+name = "iris-journal"
+version = "1.0.0"
+description = "Журнал измерений и определения видов ирисов"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "tsenturion" }]
+requires-python = ">=3.11"
+dependencies = [
+    "streamlit>=1.50,<2",
+    "pandas>=2.2,<4",
+    "scikit-learn>=1.7,<2",
+    "joblib>=1.5,<2",
+]
+
+[project.urls]
+Repository = "https://github.com/tsenturion/iris"
+Documentation = "https://github.com/tsenturion/iris#readme"
+Issues = "https://github.com/tsenturion/iris/issues"
+
+[tool.uv]
+package = false
