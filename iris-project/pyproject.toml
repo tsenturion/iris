@@ -16,7 +16,7 @@ dependencies = [
 
 [project.urls]
 Repository = "https://github.com/tsenturion/iris"
-Documentation = "https://github.com/tsenturion/iris#readme"
+Documentation = "https://github.com/tsenturion/iris/tree/main/iris-project#readme"
 Issues = "https://github.com/tsenturion/iris/issues"
 
 [tool.uv]

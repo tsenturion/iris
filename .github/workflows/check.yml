@@ -3,17 +3,39 @@ name: Проверка запуска и основных сценариев
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - "**/*.md"
-      - LICENSE
+    paths:
+      - "iris-project/app.py"
+      - "iris-project/iris_journal/**"
+      - "iris-project/tests/**"
+      - "iris-project/start.ps1"
+      - "iris-project/pyproject.toml"
+      - "iris-project/uv.lock"
+      - "iris-project/requirements.txt"
+      - "iris-project/.streamlit/config.toml"
+      - "iris-project/data/datasets/*.csv"
+      - "iris-project/examples/*.csv"
+      - ".github/workflows/check.yml"
   pull_request:
-    paths-ignore:
-      - "**/*.md"
-      - LICENSE
+    paths:
+      - "iris-project/app.py"
+      - "iris-project/iris_journal/**"
+      - "iris-project/tests/**"
+      - "iris-project/start.ps1"
+      - "iris-project/pyproject.toml"
+      - "iris-project/uv.lock"
+      - "iris-project/requirements.txt"
+      - "iris-project/.streamlit/config.toml"
+      - "iris-project/data/datasets/*.csv"
+      - "iris-project/examples/*.csv"
+      - ".github/workflows/check.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
+
+defaults:
+  run:
+    working-directory: iris-project
 
 jobs:
   windows:
@@ -32,6 +54,8 @@ jobs:
           python-version: "3.13"
       - name: Подготовка uv
         uses: astral-sh/setup-uv@v10.1.0
+        with:
+          working-directory: iris-project
       - name: Проверка первого запуска
         shell: pwsh
         run: .\start.ps1 -Check
